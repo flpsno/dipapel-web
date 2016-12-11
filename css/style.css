@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+.table-striped > tbody > tr {
+ 	background-color: #ccc;
+}
+        
+.no-margin {
+	margin-left: 0px;
+    margin-right: 0px;
+}
+        
+.no-padding {
+	padding-left: 0px;
+    padding-right: 0px;
+}
