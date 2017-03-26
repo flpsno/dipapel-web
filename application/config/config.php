@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://www.flpsno.com.br/dipapel/index.php/';
-$config['base_url'] = 'http://localhost/dipapel/';
+$config['base_url'] = 'http://localhost/dipapelweb/';
 
 /*
 |--------------------------------------------------------------------------
