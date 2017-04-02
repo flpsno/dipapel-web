@@ -23,7 +23,7 @@
                 <th>Pedido ELO7</th>
                 <th>Dt. Pedido</th>
                 <th>Itens</th>
-                <th></th>
+                <th>Salvar Itens</th>
                 <th>Tipo Frete</th>
                 <th>Vl. Frete</th>
                 <th>Vl. Total</th>
