@@ -27,7 +27,7 @@
                 <th>Tipo Frete</th>
                 <th>Vl. Frete</th>
                 <th>Vl. Total</th>
-                <th></th>
+                <th>Finalizar</th>
             </tr>
             </thead>
 
@@ -60,7 +60,7 @@
                         <textarea class="form-control" id="itens" name="itens"  rows="3" cols="50"><?php echo $row->ITENS; ?></textarea>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-saved"></span></button>                    
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-saved"></span></button>
                     </td>
                 </form>
 
