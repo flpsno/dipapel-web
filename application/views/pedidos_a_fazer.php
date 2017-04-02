@@ -1,8 +1,8 @@
 <?php $this->load->view('cabecalho', $titulo); ?>
 
-<div class="container">
+<div class="container-fluid">
     <div class="page-header">
-        <h1>Pedidos a Fazer</h1>
+        <h3>Pedidos a Fazer</h3>
             <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-sm" role="button">
                 <span class="glyphicon glyphicon-arrow-left"></span> Voltar</a>
             <a href="<?php echo base_url('index.php/pedidos/pedidos_a_fazer'); ?>" class="btn btn-primary btn-sm" role="button">
@@ -11,7 +11,7 @@
 </div>
 
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
     	<div class="col-xs-12 col-sm-12">
 
@@ -36,20 +36,24 @@
             <tr>
                 <td><?php echo $i; ?></td>
                 <td>
+                    <!-- Se é o primeiro registro, o botão mover para cima fica desabilitado -->
                     <?php if ($i == 1) { ?>
-                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-sm disabled" role="button">
+                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-xs disabled" role="button">
                         <span class="glyphicon glyphicon-chevron-up"></span></a>
+
+                    <!-- botão mover para cima -->
                     <?php } else { ?>
-                        <a href="<?php echo base_url('index.php/pedidos/mover_para_cima/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-sm" role="button">
+                        <a href="<?php echo base_url('index.php/pedidos/mover_para_cima/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
                         <span class="glyphicon glyphicon-chevron-up"></span></a>
                     <?php } ?>
 
-
+                    <!-- Se é o ultimo registro, o botão mover para baixo fica desabilitado -->
                     <?php if ($i == $total_itens) { ?>
-                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-sm disabled" role="button">
+                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-xs disabled" role="button">
                         <span class=" glyphicon glyphicon-chevron-down"></span></a>
+                    <!-- botão mover para baixo -->
                     <?php } else { ?>
-                        <a href="<?php echo base_url('index.php/pedidos/mover_para_baixo/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-sm" role="button">
+                        <a href="<?php echo base_url('index.php/pedidos/mover_para_baixo/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
                         <span class=" glyphicon glyphicon-chevron-down"></span></a>
                     <?php } ?>
                 </td>
@@ -59,8 +63,9 @@
                     <td>
                         <textarea class="form-control" id="itens" name="itens"  rows="3" cols="50"><?php echo $row->ITENS; ?></textarea>
                     </td>
-                    <td>
-                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-saved"></span></button>
+                    <!-- botão salvar itens -->
+                    <td align="center">
+                        <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-saved"></span></button>
                     </td>
                 </form>
 
@@ -68,8 +73,9 @@
                 <td><?php echo $row->TIPO_FRETE; ?></td>
                 <td><?php echo $row->VALOR_FRETE; ?></td>
                 <td><?php echo $row->VALOR_TOTAL; ?></td>
-                <td>
-                  <a href="<?php echo base_url('index.php/pedidos/marcar_como_feito/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-success" role="button">
+                <td align="center">
+                  <!-- botão finalizar -->
+                  <a href="<?php echo base_url('index.php/pedidos/marcar_como_feito/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-success btn-sm" role="button">
                   <span class="glyphicon glyphicon glyphicon-ok"></span></a>
                 </td>
             </tr>
