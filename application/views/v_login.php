@@ -1,22 +1,22 @@
 <?php $this->load->view('cabecalho', $titulo); ?>
 
-<div class="container"> 
+<div class="container">
     <div class="page-header">
         <h1>Login</h1>
     </div>
-</div>    
+</div>
 
 <div class="container">
-        <div class="jumbotron">        
+        <div class="jumbotron">
         <div class="row">
             <div class="col-sm-4 "></div>
             <div class="col-sm-4 ">
 
       <form class="form-signin" role="form" method="post" action="<?= base_url('index.php/login/logar') ?>">
-        <?php if ($erro != ''): 
+        <?php if ($erro != ''):
 			echo '<div class="alert alert-danger" role="alert" style="margin-top: 10px;">'.$erro.'</div>';
-        endif;  ?>      
-      	<p>Usu·rio:</p>
+        endif;  ?>
+      	<p>Usu√°rio:</p>
         <input type="text" class="form-control" placeholder="Email address" required autofocus name="usuario">
         <br>
         <p>Senha:</p>
@@ -27,7 +27,7 @@
       </form>
             </div>
             <div class="col-sm-4 "></div>
-        </div>      
+        </div>
 	</div> <!-- /container -->
 	</div>
 <?php $this->load->view('rodape'); ?>
