@@ -16,7 +16,7 @@
         <div class="col-xs-12 col-sm-12">
 
           <!--table-striped table-hover   -->
-          <table class="table table-responsive">
+          <table class="table table-responsive table-bordered">
 
             <?php $i = 1;  foreach ($qryvwpedidos as $row):?>
               <tbody>
@@ -33,45 +33,45 @@
                     <td rowspan="3" valign="top"><textarea class="form-control" id="itens" name="itens"  rows="3" cols="50"><?php  echo $row->ITENS; ?></textarea></td>
                   </tr>
                   <tr>
-                            <th>Comprador:</th>
-                            <td><?php echo $row->COMPRADOR; ?></td>
-                            <th>Email:</th>
-                            <td><input class="form-control"  type="text" value="<?php echo $row->EMAIL; ?>" name="email"/></td>
+                    <th>Comprador:</th>
+                    <td><?php echo $row->COMPRADOR; ?></td>
+                    <th>Email:</th>
+                    <td><input class="form-control"  type="text" value="<?php echo $row->EMAIL; ?>" name="email"/></td>
+                    <td></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <!-- Se é o primeiro registro, o botão mover para cima fica desabilitado -->
+                      <?php if ($i == 1) { ?>
+                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-xs disabled" role="button">
+                          <span class="glyphicon glyphicon-chevron-up"></span></a>
+
+                          <!-- botão mover para cima -->
+                          <?php } else { ?>
+                            <a href="<?php echo base_url('index.php/pedidos/mover_para_cima/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
+                              <span class="glyphicon glyphicon-chevron-up"></span></a>
+                              <?php } ?>
+                            </td>
+                            <th>Tipo Frete:</th>
+                            <td><?php echo $row->TIPO_FRETE; ?></td>
+                            <th>Valor Frete:</th>
+                            <td><?php echo $row->VALOR_FRETE; ?></td>
                             <td></td>
                           </tr>
 
                           <tr>
                             <td>
-                              <!-- Se é o primeiro registro, o botão mover para cima fica desabilitado -->
-                              <?php if ($i == 1) { ?>
+                              <!-- Se é o ultimo registro, o botão mover para baixo fica desabilitado -->
+                              <?php if ($i == $total_itens) { ?>
                                 <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-xs disabled" role="button">
-                                  <span class="glyphicon glyphicon-chevron-up"></span></a>
-
-                                  <!-- botão mover para cima -->
+                                  <span class=" glyphicon glyphicon-chevron-down"></span></a>
+                                  <!-- botão mover para baixo -->
                                   <?php } else { ?>
-                                    <a href="<?php echo base_url('index.php/pedidos/mover_para_cima/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
-                                      <span class="glyphicon glyphicon-chevron-up"></span></a>
+                                    <a href="<?php echo base_url('index.php/pedidos/mover_para_baixo/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
+                                      <span class=" glyphicon glyphicon-chevron-down"></span></a>
                                       <?php } ?>
                                     </td>
-                                    <th>Tipo Frete:</th>
-                                    <td><?php echo $row->TIPO_FRETE; ?></td>
-                                    <th>Valor Frete:</th>
-                                    <td><?php echo $row->VALOR_FRETE; ?></td>
-                                    <td></td>
-                                  </tr>
-
-                                  <tr>
-                                    <td>
-                                      <!-- Se é o ultimo registro, o botão mover para baixo fica desabilitado -->
-                                      <?php if ($i == $total_itens) { ?>
-                                        <a href="<?php echo base_url('index.php/pedidos'); ?>" class="btn btn-primary btn-xs disabled" role="button">
-                                          <span class=" glyphicon glyphicon-chevron-down"></span></a>
-                                          <!-- botão mover para baixo -->
-                                          <?php } else { ?>
-                                            <a href="<?php echo base_url('index.php/pedidos/mover_para_baixo/'); ?>/<?php echo $row->IDPEDIDO; ?>/<?php echo $row->POSICAO; ?>" class="btn btn-primary btn-xs" role="button">
-                                              <span class=" glyphicon glyphicon-chevron-down"></span></a>
-                                              <?php } ?>
-                                            </td>
                                     <th>Valor Total:</th>
                                     <td><?php echo $row->VALOR_TOTAL; ?></td>
                                     <th>Salvar Alterações:</th>

@@ -112,5 +112,22 @@ class Pedidos_model extends CI_Model {
 
     	$this->db->insert('tblpedidoshis', $data);
     }
+
+    public function get_grafico_vendas() {
+      $this->db->select('year(a.DATA_PEDIDO) AS ANO,
+        month(a.DATA_PEDIDO) AS MES,
+        count(a.IDPEDIDO) AS TOTAL_PEDIDOS,
+        sum(a.VALOR_TOTAL) AS VALOR_TOTAL,
+        cast((sum(a.VALOR_TOTAL) / nullif(count(a.IDPEDIDO), 0)) as decimal(15,2)) as VALOR_MEDIO_PEDIDO');
+      $this->db->from('tblpedidos a');
+      $this->db->join('tblstatuspedido b', ' on b.IDSTATUSPEDIDO = a.IDSTATUSPEDIDO');
+      $this->db->where("b.CODIGO in ('PAGO_ESPERANDO_VENDEDOR', 'PEDIDO_ENVIADO') and 0 = ", 0);
+      $this->db->group_by('month(a.DATA_PEDIDO),  year(a.DATA_PEDIDO)');
+      $this->db->order_by('year(a.DATA_PEDIDO), month(a.DATA_PEDIDO)');
+
+      $query = $this->db->get();
+
+      return $query->result();
+    }
 }
 ?>

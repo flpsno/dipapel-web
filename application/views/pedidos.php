@@ -20,6 +20,15 @@
         <div class="row">
             <div class="col-sm-4 "></div>
             <div class="col-sm-4 ">
+                <a href="<?php echo base_url('index.php/pedidos/grafico_vendas'); ?>" class="btn btn-primary btn-md" role="button">
+                    <span class="glyphicon glyphicon-equalizer"></span> Gráfico de Vendas</a>
+            </div>
+            <div class="col-sm-4 "></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-4 "></div>
+            <div class="col-sm-4 ">
                 <a href="<?php echo base_url('index.php/pedidos/novo_pedido'); ?>" class="btn btn-primary btn-md" role="button">
                     <span class="glyphicon glyphicon-plus"></span> Adicionar Pedido</a>
             </div>
