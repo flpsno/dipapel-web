@@ -127,4 +127,37 @@ class Pedidos extends MY_Controller {
        	echo $idpedido;
     }
 
+		public function grafico_vendas() {
+				$this->load->model('Pedidos_model');
+				$qrygrafico = $this->Pedidos_model->get_grafico_vendas();
+
+				// monta as arrays com todos os meses zerados
+				$data2016_valor_total = Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+				$data2016_qtd_pedidos = Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+				$data2017_valor_total = Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+				$data2017_qtd_pedidos = Array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+				foreach ($qrygrafico as $row):
+					// carrega os valores de 2016
+					if ($row->ANO == 2016) {
+							$data2016_valor_total[($row->MES - 1)] = (float)$row->VALOR_TOTAL;
+							$data2016_qtd_pedidos[($row->MES - 1)] = (int)$row->TOTAL_PEDIDOS;
+					}
+
+					// carrega os valores de 2017
+					if ($row->ANO == 2017) {
+							$data2017_valor_total[($row->MES - 1)] = (float)$row->VALOR_TOTAL;
+							$data2017_qtd_pedidos[($row->MES - 1)] = (int)$row->TOTAL_PEDIDOS;
+					}
+		  	endforeach;
+
+				$layout['data2016_valor_total'] = $data2016_valor_total;
+				$layout['data2016_qtd_pedidos'] = $data2016_qtd_pedidos;
+				$layout['data2017_valor_total'] = $data2017_valor_total;
+				$layout['data2017_qtd_pedidos'] = $data2017_qtd_pedidos;
+				$layout['titulo'] = 'Gráfico de Vendas';
+				//
+				$this->load->view('grafico_vendas', $layout);
+		}
+
 }
